@@ -74,6 +74,9 @@ function setup_D() {
    /**************** ANI A ************************************ */
   /** PUT ALL YOUR CODE FOR ANIMATION A INSIDE  HERE */
   /**************** ANI A ************************************ */
+
+  
+
   /**************** TASK *******************************************
    * YOU CAN USE ALL NOTES --- and see my examples in team-h.js for inspiration and possibly help:)
    * 1: use the function window.requestAnimationFrame() to create an animation
@@ -91,6 +94,8 @@ function setup_D() {
 
   function aniA(parentCanvas) {
     console.log("in A");
+
+    
   }
   /**************** ANI B ************************************ */
   /** PUT ALL YOUR CODE FOR ANIMATION B INSIDE  HERE */
@@ -134,28 +139,68 @@ function setup_D() {
   function aniC(parentCanvas) {
 
     console.log("in C");
-    /*** THIS IS THE CALLBACK FOR KEY DOWN ( DO NOT CHANGE THE NAME..) */
+
+    //set background color  of canvas
+    console.log(parentCanvas.getBoundingClientRect());
+    // parentCanvas.style.backgroundColor = "rgb(175, 47, 83)";
+    let p = document.createElement("div");
+    p.classList.add("TEAM_D_d_circle");
+    parentCanvas.appendChild(p);
+    p.style.width = `10px`;
+    p.style.height = `10px`;
+    p.style.left = parentCanvas.getBoundingClientRect().width / 2 + "px";
+    p.style.top = parentCanvas.getBoundingClientRect().height / 2 + "px";
+    let speedX = 5;
+
+    /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
       //code for key down in here
-      console.log(e)
-      //SAMPLE KEY CHECK (you do not have to use)
-      if (e.code === "Space") {
-        console.log("team-space down")
-      }
-    };
+      console.log(e);
 
-    /*** THIS IS THE CALLBACK FOR KEY UP ( DO NOT CHANGE THE NAME..) */
+      // if left key pressed
+      if (e.key === "ArrowLeft") {
+    
+        // move right
+          p.style.left = parseInt(p.style.left) + speedX + "px";
+
+      // if right key pressed
+      } else if (e.key === "ArrowRight") {
+
+        // move left
+          p.style.left = parseInt(p.style.left) - speedX + "px";
+        
+      }
+
+      // if left key pressed
+      if (e.key === "ArrowUp") {
+        if (parseInt(p.style.width) > 10) {
+          p.style.left = parseInt(p.style.left) - speedX + "px";
+          p.style.heileftght = parseInt(p.style.left) - speedX + "px";
+            parseInt(p.style.borderRadius) - speedX / 2 + "px";
+        }
+
+        // if right key
+      } else if (e.key === "ArrowDown") {
+        if (parseInt(p.style.width) < 250) {
+          p.style.width = parseInt(p.style.width) + speedX + "px";
+          p.style.height = parseInt(p.style.height) + speedX + "px";
+            parseInt(p.style.borderRadius) + speedX / 2 + "px";
+        }
+      }
+
+
+    /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
-    //SAMPLE KEY CHECK (you do not have to use)
+      //code for key down in here
       if (e.code === "Space") {
         console.log("space up");
-        console.log("team-space up")
+        console.log("h-space up");
       }
-
     };
 
     //DO NOT REMOVE
     window.addEventListener("keydown", windowKeyDownRef);
     window.addEventListener("keyup", windowKeyUpRef);
   }
+}
 }
