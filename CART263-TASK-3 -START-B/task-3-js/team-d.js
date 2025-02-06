@@ -139,6 +139,7 @@ function setup_D() {
   function aniC(parentCanvas) {
 
     console.log("in C");
+    let blurAmount = 0;
 
     //set background color  of canvas
     console.log(parentCanvas.getBoundingClientRect());
@@ -160,7 +161,7 @@ function setup_D() {
       // if left key pressed
       if (e.key === "ArrowLeft") {
     
-        // move right
+        // move ri
           p.style.left = parseInt(p.style.left) + speedX + "px";
 
       // if right key pressed
@@ -188,6 +189,18 @@ function setup_D() {
         }
       }
 
+      //to white
+      else if (e.key === "-") {
+      
+      }
+
+      //to blue
+      else if (e.key === "+") {
+        
+      }
+
+    
+    };
 
     /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
@@ -202,5 +215,4 @@ function setup_D() {
     window.addEventListener("keydown", windowKeyDownRef);
     window.addEventListener("keyup", windowKeyUpRef);
   }
-}
 }
